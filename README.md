@@ -1,2 +1,11 @@
-# OSVH_Platform
-Platform for the Open School of Village Hosts - Erasmus+ VET project
+![OSVH_Platform](IMG/villagehosts_logo.png)
+
+# Platform for the Open School of Village Hosts - Erasmus+ VET project
+
+
+
+![EU Flag](IMG/normal-reproduction-low-resolution.jpg)
+
+Co-funded by the Erasmus+ Programme of the European Union
+
+THE EUROPEAN COMMISSION SUPPORT FOR THE PRODUCTION OF THIS PUBLICATION DOES NOT CONSTITUTE AN ENDORSEMENT OF THE CONTENTS WHICH REFLECTS THE VIEWS ONLY OF THE AUTHORS, AND THE COMMISSION CANNOT BE HELD RESPONSIBLE FOR ANY USE WHICH MAY BE MADE OF THE INFORMATION CONTAINED THEREIN.
