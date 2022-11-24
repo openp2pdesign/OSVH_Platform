@@ -5,6 +5,7 @@ services:
   # --- FRONT-END ---
 
   # Wordpress
+  # As the main platform
   wordpress:
     container_name: "OSVH_WORDPRESS"
     build:
@@ -16,8 +17,10 @@ services:
         - .env
 
   # Moodle
+  # For the training and competencies
 
   # Discourse
+  # For the community discussions
 
   # --- MANAGEMENT ---
 
