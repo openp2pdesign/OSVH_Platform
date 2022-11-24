@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+
+  # --- FRONT-END ---
+
+  # Static homepage
+  homepage:
+    container_name: "OSVH_WORDPRESS"
+    build:
+      context: ./wordpress
+      dockerfile: Dockerfile-wordpress
+    ports:
+      - 80:80
+    env_file:
+        - .env
+
+  # --- MANAGEMENT ---
+
+  # Portainer
+  # For managing containers
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: "OSVH_PORTAINER"
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./portainer-data:/data
+    ports:
+      - 9000:9000
+
+
+volumes:
+  mongo:
+  postgres:
+  redis:
+  airflow:
