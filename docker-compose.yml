@@ -21,6 +21,8 @@ services:
 
   # Discourse
   # For the community discussions
+  # https://github.com/discourse/discourse/blob/main/docs/INSTALL-cloud.md
+  # https://github.com/discourse/discourse_docker
 
   # --- MANAGEMENT ---
 
