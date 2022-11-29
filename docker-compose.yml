@@ -2,7 +2,7 @@ version: '3'
 
 services:
 
-  # --- Databases ---
+  # --- DATABASE ---
   # MariaDB
   mariadb:
     image: mariadb:10.6.4-focal
@@ -47,30 +47,26 @@ services:
     links:
       - mariadb
 
-        #  # Moodle
-        #  # For the training and competencies
-        #
-        #  # Discourse
-        #  # For the community discussions
-        #  # https://github.com/discourse/discourse/blob/main/docs/INSTALL-cloud.md
-        #  # https://github.com/discourse/discourse_docker
-        #
-        #  # --- MANAGEMENT ---
-        #
-        #  # Portainer
-        #  # For managing containers
-        #  portainer:
-        #    image: portainer/portainer-ce:latest
-        #    container_name: "OSVH_PORTAINER"
-        #    restart: always
-        #    security_opt:
-        #      - no-new-privileges:true
-        #    volumes:
-        #      - /etc/localtime:/etc/localtime:ro
-        #      - /var/run/docker.sock:/var/run/docker.sock:ro
-        #      - ./portainer-data:/data
-        #    ports:
-        #      - 9000:9000
+  # Moodle
+  # For the training and competencies
+
+
+  # --- MANAGEMENT ---
+
+  # Portainer
+  # For managing containers
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: "OSVH_PORTAINER"
+    restart: always
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./portainer-data:/data
+    ports:
+      - 9000:9000
 
 volumes:
   mariadb_data:
