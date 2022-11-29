@@ -2,44 +2,77 @@ version: '3'
 
 services:
 
-  # --- FRONT-END ---
+  db:
 
+    image: mariadb:10.6.4-focal
+
+    command: '--default-authentication-plugin=mysql_native_password'
+
+    volumes:
+
+      - db_data:/var/lib/mysql
+
+    restart: always
+
+    environment:
+      
+      - .env
+
+    expose:
+
+      - 3306
+
+      - 33060
+
+  # --- FRONT-END ---
   # Wordpress
-  # As the main platform
+  # As the main platform
   wordpress:
-    container_name: "OSVH_WORDPRESS"
-    build:
-      context: ./wordpress
-      dockerfile: Dockerfile-wordpress
+    
+    image: wordpress:latest
+    
+    #container_name: "OSVH_WORDPRESS"
+    
+    volumes:
+      - wp_data:/var/www/htlm
+      #build:
+      #context: /wordpress
+      # dockerfile: Dockerfile-wordpress
     ports:
       - 80:80
-    env_file:
-        - .env
 
-  # Moodle
-  # For the training and competencies
-
-  # Discourse
-  # For the community discussions
-  # https://github.com/discourse/discourse/blob/main/docs/INSTALL-cloud.md
-  # https://github.com/discourse/discourse_docker
-
-  # --- MANAGEMENT ---
-
-  # Portainer
-  # For managing containers
-  portainer:
-    image: portainer/portainer-ce:latest
-    container_name: "OSVH_PORTAINER"
     restart: always
-    security_opt:
-      - no-new-privileges:true
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./portainer-data:/data
-    ports:
-      - 9000:9000
+    
+    environment:
+      - .env
 
+        #  # Moodle
+        #  # For the training and competencies
+        #
+        #  # Discourse
+        #  # For the community discussions
+        #  # https://github.com/discourse/discourse/blob/main/docs/INSTALL-cloud.md
+        #  # https://github.com/discourse/discourse_docker
+        #
+        #  # --- MANAGEMENT ---
+        #
+        #  # Portainer
+        #  # For managing containers
+        #  portainer:
+        #    image: portainer/portainer-ce:latest
+        #    container_name: "OSVH_PORTAINER"
+        #    restart: always
+        #    security_opt:
+        #      - no-new-privileges:true
+        #    volumes:
+        #      - /etc/localtime:/etc/localtime:ro
+        #      - /var/run/docker.sock:/var/run/docker.sock:ro
+        #      - ./portainer-data:/data
+        #    ports:
+        #      - 9000:9000
 
 volumes:
+
+  db_data:
+
+  wp_data:
