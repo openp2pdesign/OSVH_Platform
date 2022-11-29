@@ -1,38 +1,28 @@
 version: '3'
 
 services:
+  
+  # --- Databases ---
+  # MariaDB
 
-  db:
-
+  mariadb:
     image: mariadb:10.6.4-focal
-
-    command: '--default-authentication-plugin=mysql_native_password'
-
+    container_name: "OSVH_MARIADB"
     volumes:
-
-      - db_data:/var/lib/mysql
-
+      - mariadb_data:/var/lib/mysql
     restart: always
-
-    environment:
-      
+    env_file:
       - .env
-
     expose:
-
       - 3306
-
       - 33060
 
   # --- FRONT-END ---
   # Wordpress
   # As the main platform
   wordpress:
-    
     image: wordpress:latest
-    
-    #container_name: "OSVH_WORDPRESS"
-    
+    container_name: "OSVH_WORDPRESS"
     volumes:
       - wp_data:/var/www/htlm
       #build:
@@ -40,11 +30,13 @@ services:
       # dockerfile: Dockerfile-wordpress
     ports:
       - 80:80
-
     restart: always
-    
     environment:
       - .env
+    depends_on:
+      - mariadb
+    links:
+      - mariadb
 
         #  # Moodle
         #  # For the training and competencies
@@ -72,7 +64,5 @@ services:
         #      - 9000:9000
 
 volumes:
-
-  db_data:
-
+  mariadb_data:
   wp_data:
