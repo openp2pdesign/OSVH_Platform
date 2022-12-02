@@ -47,7 +47,7 @@ services:
     links:
       - mariadb
 
-  # Moodle
+  # Moodle  
   # For the training and competencies
   moodle:
     image: moodlehq/moodleapp
