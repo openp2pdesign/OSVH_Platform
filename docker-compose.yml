@@ -49,7 +49,22 @@ services:
 
   # Moodle
   # For the training and competencies
-
+  moodle:
+    image: moodlehq/moodleapp
+    container_name: "OSVH_MOODLE"
+    ports:
+      - 8100:80
+    environment:
+      - MOODLE_DATABASE_HOST=mariabd
+      - MOODLE_DATABASE_PORT=3306
+      - MOODLE_DB_NAME=moodle
+      - MOODLE_DB_USER=moodle
+      - ALLOW_EMPTY_PASSWORD=yes
+    volumes:
+      - /var/www/html
+      - moodle_data:/var/www/moodledata
+    depends_on:
+      - mariadb 
 
   # --- MANAGEMENT ---
 
@@ -71,3 +86,4 @@ services:
 volumes:
   mariadb_data:
   wp_data:
+  moodle_data:
