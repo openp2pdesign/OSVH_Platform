@@ -39,7 +39,7 @@ services:
       # dockerfile: Dockerfile-wordpress
     restart: always
     ports:
-      - 80:80
+      - 8100:80
     environment:
       - .env
     depends_on:
@@ -47,13 +47,13 @@ services:
     links:
       - mariadb
 
-  # Moodle  
+  # Moodle
   # For the training and competencies
   moodle:
     image: moodlehq/moodleapp
     container_name: "OSVH_MOODLE"
     ports:
-      - 8100:80
+      - 80:80
     environment:
       - MOODLE_DATABASE_HOST=mariabd
       - MOODLE_DATABASE_PORT=3306
@@ -64,7 +64,7 @@ services:
       - /var/www/html
       - moodle_data:/var/www/moodledata
     depends_on:
-      - mariadb 
+      - mariadb
 
   # --- MANAGEMENT ---
 
