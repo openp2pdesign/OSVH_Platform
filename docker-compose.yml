@@ -76,8 +76,6 @@ services:
       - 443:8443
     env_file:
       - .env
-    # this is recommended only for development.
-    - ALLOW_EMPTY_PASSWORD=yes
     volumes:
       - /var/www/html
       - moodle_data:/var/www/moodledata
