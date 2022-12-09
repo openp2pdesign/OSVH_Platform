@@ -60,6 +60,7 @@ services:
       - MOODLE_DOCKER_DB_PORT=3306
       - MOODLE_DOCKER_DBNAME=moodle
       - MOODLE_DOCKER_DBUSER=moodle
+      - MOODLE_DOCKER_WEB_HOST=platform.villagehosts.eu
       - ALLOW_EMPTY_PASSWORD=yes
     volumes:
       - /var/www/html
