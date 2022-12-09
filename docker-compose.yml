@@ -74,12 +74,8 @@ services:
     ports:
       - 80:8080
       - 443:8443
-    environment:
-    - MOODLE_DOCKER_DB=mariadb
-    - MOODLE_DATABASE_HOST=mariadb
-    - MOODLE_DATABASE_PORT_NUMBER=3306
-    - MOODLE_DATABASE_USER=bn_moodle
-    - MOODLE_DATABASE_NAME=bitnami_moodle
+    env_file:
+      - .env
     # this is recommended only for development.
     - ALLOW_EMPTY_PASSWORD=yes
     volumes:
