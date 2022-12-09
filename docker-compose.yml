@@ -55,7 +55,7 @@ services:
     ports:
       - 80:80
     environment:
-      - MOODLE_DATABASE_HOST=mariabd
+      - MOODLE_DATABASE_HOST=mariadb
       - MOODLE_DATABASE_PORT=3306
       - MOODLE_DB_NAME=moodle
       - MOODLE_DB_USER=moodle
