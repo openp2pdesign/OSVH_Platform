@@ -73,6 +73,7 @@ services:
     restart: always
     ports:
       - 80:8080
+    environment:
     - MOODLE_DOCKER_DB=mariadb
     - MOODLE_DATABASE_HOST=mariadb
     - MOODLE_DATABASE_PORT_NUMBER=3306
