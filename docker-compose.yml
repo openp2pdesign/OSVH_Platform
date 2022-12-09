@@ -55,10 +55,11 @@ services:
     ports:
       - 80:80
     environment:
+      - MOODLE_DOCKER_DB=mariadb
       - MOODLE_DATABASE_HOST=mariadb
-      - MOODLE_DATABASE_PORT=3306
-      - MOODLE_DB_NAME=moodle
-      - MOODLE_DB_USER=moodle
+      - MOODLE_DOCKER_DB_PORT=3306
+      - MOODLE_DOCKER_DBNAME=moodle
+      - MOODLE_DOCKER_DBUSER=moodle
       - ALLOW_EMPTY_PASSWORD=yes
     volumes:
       - /var/www/html
