@@ -73,6 +73,7 @@ services:
     restart: always
     ports:
       - 80:8080
+      - 443:8443
     environment:
     - MOODLE_DOCKER_DB=mariadb
     - MOODLE_DATABASE_HOST=mariadb
@@ -81,10 +82,11 @@ services:
     - MOODLE_DATABASE_NAME=bitnami_moodle
     # this is recommended only for development.
     - ALLOW_EMPTY_PASSWORD=yes
-  volumes:
-    - 'moodle_data:/bitnami/moodle'
-  depends_on:
-    - mariadb
+    volumes:
+      - /var/www/html
+      - moodle_data:/var/www/moodledata
+    depends_on:
+      - mariadb
 
 
   # --- MANAGEMENT ---
