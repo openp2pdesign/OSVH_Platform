@@ -94,7 +94,7 @@ services:
   moodle:
     image: bitnami/moodle:4
     container_name: "OSVH_MOODLE"
-#    restart: always
+    restart: always
     ports:
       - 80:8080
       - 443:8443
