@@ -96,8 +96,8 @@ services:
     container_name: "OSVH_MOODLE"
 #    restart: always
     ports:
-      - 8080:80
-      - 8444:8443
+      - 80:8080
+      - 443:8443
     env_file:
       - .env_m
     volumes:
