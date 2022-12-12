@@ -40,14 +40,14 @@ services:
     ports:
       - 8081:80
     environment:
-      - PMA_ARBITRARY=1
-      # - PMA_HOST=db_wp
+      #- PMA_ARBITRARY=1
+      - PMA_HOST=db_wp
     depends_on:
       - db_wp
       - db_m
     networks:
       - wpsite
-      # - msite
+      #- msite
 
 
   # --- FRONT-END ---
