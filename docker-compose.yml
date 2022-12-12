@@ -38,7 +38,7 @@ services:
     container_name: "OSVH_PHPMYADMIN"
     restart: always
     ports:
-      - 8080:8081
+      - 8081:80
     environment:
       - .env_wp
     depends_on:
