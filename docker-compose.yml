@@ -38,16 +38,13 @@ services:
     container_name: "OSVH_PHPMYADMIN"
     restart: always
     ports:
-      - 8081:80
+      - 8080:8081
     environment:
-      #- PMA_ARBITRARY=1
-      - PMA_HOST=db_wp
+      - .env_wp
     depends_on:
       - db_wp
-      - db_m
     networks:
       - wpsite
-      #- msite
 
 
   # --- FRONT-END ---
