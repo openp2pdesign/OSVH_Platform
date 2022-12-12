@@ -101,8 +101,8 @@ services:
     env_file:
       - .env_m
     volumes:
-      - 'moodle_data:/bitnami/moodle'
-      - 'moodledata_data:/bitnami/moodledata'
+      - moodle_data:/bitnami/moodle
+      - moodledata_data:/bitnami/moodledata
     depends_on:
       - db_m
     networks:
@@ -121,8 +121,10 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./portainer:/data
+      - ./portainer_data:/data
     ports:
+      - 8000:8000
+      - 9443:9443
       - 9000:9000
     networks:
       - wpsite
