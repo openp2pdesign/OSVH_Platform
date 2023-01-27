@@ -4,22 +4,22 @@ services:
 
   # --- DATABASE ---
   # MySQL
-  db_wp:
+  db_mysql:
     image: mysql:5.7
-    container_name: "OSVH_DB_WP"
+    container_name: "OSVH_DB_MYSQL"
     volumes:
-      - db_wp_data:/var/lib/mysql
+      - db_mysql_data:/var/lib/mysql
     restart: always
-    environment:
-      - .env_wp
+    env_file:
+      - .env_w
     networks:
       - wpsite
   # MariaDB
-  db_m:
+  db_maria:
     image: mariadb:10.10
-    container_name: "OSVH_DB_M"
+    container_name: "OSVH_DB_MARIA"
     volumes:
-      - db_m_data:/var/lib/mysql
+      - db_maria_data:/var/lib/mysql
     restart: always
     env_file:
       - .env_m
@@ -28,6 +28,19 @@ services:
       - 33070
     networks:
       - msite
+  # PostgreSQL
+  db_postgres:
+    image: postgres
+    container_name: "OSVH_DB_POSTGRES"
+    restart: always
+    env_file:
+      - .env_l
+    expose:
+      - 5432
+    volumes:
+      - db_postgres_data:/var/lib/postgresql
+    networks:
+      - lsite
 
   # phpMyAdmin
   phpmyadmin:
@@ -38,9 +51,9 @@ services:
     ports:
       - 8081:80
     environment:
-      - .env_wp
+      - .env_w
     depends_on:
-      - db_wp
+      - db_mysql
     networks:
       - wpsite
 
@@ -61,9 +74,9 @@ services:
     ports:
       - 8100:80
     environment:
-      - .env_wp
+      - .env_w
     depends_on:
-      - db_wp
+      - db_mysql
     networks:
       - wpsite
 
@@ -101,9 +114,28 @@ services:
       - moodle_data:/bitnami/moodle
       - moodledata_data:/bitnami/moodledata
     depends_on:
-      - db_m
+      - db_maria
     networks:
       - msite
+
+  # LimeSurvey
+  # For user surveys
+  limesurvey:
+    image: docker.io/martialblog/limesurvey:latest
+    container_name: "OSVH_LIMESURVEY"
+    restart: always
+    env_file:
+      - .env_l
+    volumes:
+      - limesurvey_data:/var/www/html/upload/surveys
+    ports:
+      - 8082:8080
+    depends_on:
+      - db_postgres
+    links:
+      - db_postgres
+    networks:
+      - lsite
 
   # --- MANAGEMENT ---
 
@@ -129,12 +161,15 @@ services:
       - msite
 
 volumes:
-  db_wp_data:
-  db_m_data:
+  db_mysql_data:
+  db_maria_data:
+  db_postgres_data:
   wp_data:
   moodle_data:
   moodledata_data:
+  limesurvey_data:
 
 networks:
   wpsite:
   msite:
+  lsite:
