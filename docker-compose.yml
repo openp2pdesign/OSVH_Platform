@@ -101,18 +101,18 @@ services:
   #   depends_on:
   #     - mariadb
   moodle:
-    image: bitnami/moodle:4
+    image: moodlehq/moodleapp
     container_name: "OSVH_MOODLE"
     hostname: platform.villagehosts.eu
     restart: always
     ports:
-      - 80:8080
+      - 8101:80
       - 443:8443
     env_file:
       - .env_m
     volumes:
-      - moodle_data:/bitnami/moodle
-      - moodledata_data:/bitnami/moodledata
+      - /var/www/html
+      - moodle_data:/var/www/moodledata
     depends_on:
       - db_maria
     networks:
