@@ -72,7 +72,7 @@ services:
       # dockerfile: Dockerfile-wordpress
     restart: always
     ports:
-      - 8100:80
+      - 80:80
     environment:
       - .env_w
     depends_on:
@@ -81,32 +81,13 @@ services:
       - wpsite
 
   # Moodle
-  # For the training and competencies
-  # moodle:
-  #   image: moodlehq/moodleapp
-  #   container_name: "OSVH_MOODLE"
-  #   ports:
-  #     - 80:80
-  #   environment:
-  #     - MOODLE_DOCKER_DBTYPE=mariadb
-  #     - MOODLE_DOCKER_DBNAME=mariadb
-  #     - MOODLE_DOCKER_DB_PORT=3306
-  #     - MOODLE_DOCKER_DBUSER=moodle
-  #     - MOODLE_DOCKER_DBPASS=moodle
-  #     - MOODLE_DOCKER_WEB_HOST=platform.villagehosts.eu
-  #     - MOODLE_DOCKER_WEB_PORT=80
-  #   volumes:
-  #     - /var/www/html
-  #     - moodle_data:/var/www/moodledata
-  #   depends_on:
-  #     - mariadb
   moodle:
     image: bitnami/moodle:4
     container_name: "OSVH_MOODLE"
     hostname: platform.villagehosts.eu
     restart: always
     ports:
-      - 80:8080
+      - 8100:8080
       - 443:8443
     env_file:
       - .env_m
@@ -156,6 +137,20 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./portainer_data:/data
+    networks:
+      - wpsite
+      - msite
+  # https-portal  
+  https-portal:
+    image: steveltn/https-portal:1
+    ports:
+      - 8082:80
+      - 8084:443
+    restart: always
+    environment:
+      DOMAINS: 'platform.villagehosts.eu -> http://moodle:80'
+      STAGE: 'local' # Don't use production until staging
+      # FORCE_RENEW: 'true'
     networks:
       - wpsite
       - msite
