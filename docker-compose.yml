@@ -49,7 +49,7 @@ services:
     hostname: platform.villagehosts.eu
     restart: always
     ports:
-      - 8081:80
+      - 8086:80
     environment:
       - .env_w
     depends_on:
@@ -72,7 +72,7 @@ services:
       # dockerfile: Dockerfile-wordpress
     restart: always
     ports:
-      - 80:80
+      - 8100:80
     environment:
       - .env_w
     depends_on:
@@ -87,14 +87,16 @@ services:
     hostname: platform.villagehosts.eu
     restart: always
     ports:
-      - 8100:8080
-      - 443:8443
+      - 8081:8080
+      - 8082:8443
     env_file:
       - .env_m
     volumes:
       - moodle_data:/bitnami/moodle
       - moodledata_data:/bitnami/moodledata
     depends_on:
+      - db_maria
+    links:
       - db_maria
     networks:
       - msite
@@ -110,7 +112,7 @@ services:
     volumes:
       - limesurvey_data:/var/www/html/upload/surveys
     ports:
-      - 8082:8080
+      - 8085:8080
     depends_on:
       - db_postgres
     links:
@@ -140,20 +142,18 @@ services:
     networks:
       - wpsite
       - msite
-  # https-portal  
-  https-portal:
-    image: steveltn/https-portal:1
-    ports:
-      - 8084:80
-      - 8085:443
-    restart: always
-    environment:
-      DOMAINS: 'platform.villagehosts.eu -> http://moodle:8100'
-      STAGE: 'local' # Don't use production until staging
-      # FORCE_RENEW: 'true'
-    networks:
-      - wpsite
-      - msite
+  app:
+   image: 'jc21/nginx-proxy-manager:latest'
+   container_name: "OSVH_NGINXPROXYMANAGER"
+   restart: always
+   ports:
+     - 80:80
+     - 8083:81
+     - 443:443
+   volumes:
+     - ./nginx_data:/data
+     - ./letsencrypt_data:/etc/letsencrypt
+
 
 volumes:
   db_mysql_data:
@@ -163,6 +163,8 @@ volumes:
   moodle_data:
   moodledata_data:
   limesurvey_data:
+  nginx_data:
+  letsencrypt_data:
 
 networks:
   wpsite:
