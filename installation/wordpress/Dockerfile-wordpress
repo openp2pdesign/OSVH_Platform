@@ -11,12 +11,12 @@ RUN apt update && \
 # Plugins to be added programmatically
 RUN wget https://downloads.wordpress.org/plugin/really-simple-ssl.6.2.0.zip
 RUN unzip really-simple-ssl.6.2.0.zip
-RUN cp -R really-simple-ssl /var/www/html/wp-content/plugins/really-simple-ssl
+RUN cp -R really-simple-ssl /usr/src/wordpress/wp-content/plugins/really-simple-ssl
 RUN rm really-simple-ssl.6.2.0.zip
 RUN rm -rf really-simple-ssl
 
 # Plugins copied manually in the folder
-COPY wp-content/plugins/gtranslate /var/www/html/wp-content/plugins/gtranslate
+#COPY wp-content/plugins/gtranslate /usr/src/wordpress/wp-content/plugins/gtranslate
 
 
 COPY ./config/uploads.ini /usr/local/etc/php/conf.d/uploads.ini

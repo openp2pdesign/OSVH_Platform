@@ -65,8 +65,8 @@ services:
     #image: wordpress:latest
     container_name: "OSVH_WORDPRESS"
     hostname: platform.villagehosts.eu
-    #volumes:
-    #   - ./volumes/wp_data/wp-content:/var/www/html/wp-content
+    volumes:
+       - ./volumes/wp_data/wp-content:/var/www/html/wp-content
     build:
       context: ./installation/wordpress
       dockerfile: Dockerfile-wordpress
