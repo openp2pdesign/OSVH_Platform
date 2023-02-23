@@ -62,14 +62,17 @@ services:
   # Wordpress
   # As the main platform
   wordpress:
-    image: wordpress:latest
+    #image: wordpress:latest
     container_name: "OSVH_WORDPRESS"
     hostname: platform.villagehosts.eu
     volumes:
       - ./volumes/wp_data:/var/www/html
-    #build:
-      #context: /wordpress
-      # dockerfile: Dockerfile-wordpress
+      #- ./installation/wordpress/wp-content/uploads:/var/www/html/wp-content/uploads
+      #- ./installation/wp-content/plugins:/var/www/html/wp-content/plugins
+      #- ./installation/wordpress/wp-content/themes:/var/www/html/wp-content/themes
+    build:
+      context: ./installation/wordpress
+      dockerfile: Dockerfile-wordpress
     restart: always
     ports:
       - 8100:80
@@ -142,7 +145,10 @@ services:
     networks:
       - wpsite
       - msite
-  app:
+
+  # Nginx Proxy Manager
+  # For managing domains and certificates
+  nginxproxymanager:
    image: 'jc21/nginx-proxy-manager:latest'
    container_name: "OSVH_NGINXPROXYMANAGER"
    restart: always
@@ -165,6 +171,7 @@ volumes:
   limesurvey_data:
   nginx_data:
   letsencrypt_data:
+
 
 networks:
   wpsite:
