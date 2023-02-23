@@ -8,14 +8,7 @@ RUN apt update && \
     wget \
     unzip
 
-RUN cd usr/s/rc/wordpress/wp-content/plugins/
 
-RUN wget https://downloads.wordpress.org/plugin/really-simple-ssl.6.2.0.zip
-RUN unzip really-simple-ssl.6.2.0.zip
-RUN rm really-simple-ssl.6.2.0.zip
-
-COPY ["wp-content/themes","/usr/src/wordpress/wp-content/themes"]
-COPY ["wp-content/plugins","/usr/src/wordpress/wp-content/plugins"]
-COPY ["wp-content/uploads","/usr/src/wordpress/wp-content/uploads"]
+COPY wp-content/plugins/really-simple-ssl /var/www/html/wp-content/plugins/really-simple-ssl
 
 COPY ./config/uploads.ini /usr/local/etc/php/conf.d/uploads.ini
