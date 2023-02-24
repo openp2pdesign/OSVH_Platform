@@ -9,14 +9,50 @@ RUN apt update && \
     unzip
 
 # Plugins to be added programmatically
+# - Really Simple SSL
+# - bbPress
+# - BuddyPress
+# - Login using WordPress Users ( WP as SAML IDP )
+# - WordPress REST API – OAuth 1.0a Server
+
+# Really Simple SSL
 RUN wget https://downloads.wordpress.org/plugin/really-simple-ssl.6.2.0.zip
 RUN unzip really-simple-ssl.6.2.0.zip
 RUN cp -R really-simple-ssl /usr/src/wordpress/wp-content/plugins/really-simple-ssl
-RUN rm really-simple-ssl.6.2.0.zip
-RUN rm -rf really-simple-ssl
+RUN rm really-simple-ssl.6.2.0.zip && rm -rf really-simple-ssl
+
+# bbPress
+RUN wget https://downloads.wordpress.org/plugin/bbpress.2.6.9.zip
+RUN unzip bbpress.2.6.9.zip
+RUN cp -R bbpress /usr/src/wordpress/wp-content/plugins/bbpress
+RUN rm bbpress.2.6.9.zip && rm -rf bbpress
+
+# BuddyPress
+RUN wget https://downloads.wordpress.org/plugin/buddypress.11.1.0.zip
+RUN unzip buddypress.11.1.0.zip
+RUN cp -R buddypress /usr/src/wordpress/wp-content/plugins/buddypress
+RUN rm buddypress.11.1.0.zip && rm -rf buddypress
+
+# Login using WordPress Users ( WP as SAML IDP )
+RUN wget https://downloads.wordpress.org/plugin/miniorange-wp-as-saml-idp.1.14.5.zip
+RUN unzip miniorange-wp-as-saml-idp.1.14.5.zip
+RUN cp -R miniorange-wp-as-saml-idp /usr/src/wordpress/wp-content/plugins/miniorange-wp-as-saml-idp
+RUN rm miniorange-wp-as-saml-idp.1.14.5.zip && rm -rf miniorange-wp-as-saml-idp
+
+# WordPress REST API – OAuth 1.0a Server
+RUN wget https://downloads.wordpress.org/plugin/rest-api-oauth1.0.3.0.zip
+RUN unzip rest-api-oauth1.0.3.0.zip
+RUN cp -R rest-api-oauth1 /usr/src/wordpress/wp-content/plugins/rest-api-oauth1
+RUN rm rest-api-oauth1.0.3.0.zip && rm -rf rest-api-oauth1
 
 # Plugins copied manually in the folder
 #COPY wp-content/plugins/gtranslate /usr/src/wordpress/wp-content/plugins/gtranslate
 
+# Themes copied manually in the folder
+#COPY wp-content/themes/gtranslate /usr/src/wordpress/wp-content/themes/gtranslate
 
+# Uploaded files copied manually in the folder
+#COPY wp-content/uploads /usr/src/wordpress/wp-content/uploads
+
+# Uploads configurations
 COPY ./config/uploads.ini /usr/local/etc/php/conf.d/uploads.ini
