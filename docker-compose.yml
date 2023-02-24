@@ -63,13 +63,13 @@ services:
   # As the main platform
   wordpress:
     #image: wordpress:latest
+    build:
+      context: ./installation/wordpress
+      dockerfile: Dockerfile-wordpress
     container_name: "OSVH_WORDPRESS"
     hostname: platform.villagehosts.eu
     volumes:
        - ./volumes/wp_data/wp-content:/var/www/html/wp-content
-    build:
-      context: ./installation/wordpress
-      dockerfile: Dockerfile-wordpress
     restart: always
     ports:
       - 8100:80
@@ -81,10 +81,14 @@ services:
       - wpsite
 
   # Moodle
+  # For the training
   moodle:
-    image: bitnami/moodle:4
+    #image: bitnami/moodle:4
+    build:
+      context: ./installation/moodle
+      dockerfile: Dockerfile-moodle
     container_name: "OSVH_MOODLE"
-    hostname: platform.villagehosts.eu
+    hostname: training.villagehosts.eu
     restart: always
     ports:
       - 8081:8080

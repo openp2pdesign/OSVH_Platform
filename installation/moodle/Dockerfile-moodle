@@ -1,0 +1,30 @@
+FROM docker.io/bitnami/moodle:4
+
+RUN apt update && \
+    apt upgrade -y && \
+    apt autoremove && \
+    apt install -y \
+    vim \
+    wget \
+    unzip
+
+# Manual installation via server
+# https://docs.moodle.org/401/en/Installing_plugins
+# /path/to/moodle/theme/ - themes
+# /path/to/moodle/mod/ - activity modules and resources
+# /path/to/moodle/blocks/ - sidebar blocks
+# /path/to/moodle/question/type/ - question types
+# /path/to/moodle/course/format/ - course formats
+# /path/to/moodle/admin/report/ - admin reports
+# Copy here /bitnami/moodle/theme
+# Copy here /opt/bitnami/moodle/theme
+
+# Plugins & themes to be added programmatically
+RUN wget https://moodle.org/plugins/download.php/28458/mod_jitsi_moodle41_2023012900.zip
+RUN unzip mod_jitsi_moodle41_2023012900.zip
+RUN cp -R jitsi /opt/bitnami/moodle/mod/jitsi
+RUN rm mod_jitsi_moodle41_2023012900.zip && rm -rf jitsi
+
+# Plugins & themes copied manually in the folder
+#COPY theme /opt/bitnami/moodle/theme
+
