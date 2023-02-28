@@ -41,32 +41,19 @@ services:
 
   # phpMyAdmin
   # phpMyAdmin for Wordpress
-  phpmyadmin_w:
+  phpmyadmin:
     image: phpmyadmin
-    container_name: "OSVH_PHPMYADMIN_WORDPRESS"
-    hostname: platform.villagehosts.eu
+    container_name: "OSVH_PHPMYADMIN"
     restart: always
     ports:
       - 8086:80
     environment:
-      - .env_w
+      - PMA_ARBITRARY=1
     depends_on:
       - db_mysql
-    networks:
-      - wpsite
-  # phpMyAdmin for Moodle
-  phpmyadmin_m:
-    image: phpmyadmin
-    container_name: "OSVH_PHPMYADMIN_MOODLE"
-    hostname: platform.villagehosts.eu
-    restart: always
-    ports:
-      - 8087:80
-    environment:
-      - .env_m
-    depends_on:
       - db_maria
     networks:
+      - wpsite
       - msite
 
   # --- FRONT-END ---
