@@ -17,7 +17,6 @@ RUN apt update && \
 # /path/to/moodle/question/type/ - question types
 # /path/to/moodle/course/format/ - course formats
 # /path/to/moodle/admin/report/ - admin reports
-# Copy here /bitnami/moodle/theme
 # Copy here /opt/bitnami/moodle/theme
 
 # Plugins & themes to be added programmatically
