@@ -14,6 +14,8 @@ RUN apt update && \
 # - BuddyPress
 # - Login using WordPress Users ( WP as SAML IDP )
 # - WordPress REST API – OAuth 1.0a Server
+# - iubenda | All-in-one Compliance for GDPR / CCPA Cookie Consent + more
+# - Matomo
 
 # Really Simple SSL
 RUN wget https://downloads.wordpress.org/plugin/really-simple-ssl.6.2.0.zip
@@ -46,14 +48,26 @@ RUN unzip rest-api-oauth1.0.3.0.zip
 RUN cp -R rest-api-oauth1 /usr/src/wordpress/wp-content/plugins/rest-api-oauth1
 RUN rm rest-api-oauth1.0.3.0.zip && rm -rf rest-api-oauth1
 
+# iubenda | All-in-one Compliance for GDPR / CCPA Cookie Consent + more
+RUN wget https://downloads.wordpress.org/plugin/iubenda-cookie-law-solution.3.5.9.zip
+RUN unzip iubenda-cookie-law-solution.3.5.9.zip
+RUN cp -R iubenda-cookie-law-solution /usr/src/wordpress/wp-content/plugins/iubenda-cookie-law-solution
+RUN rm iubenda-cookie-law-solution.3.5.9.zip && rm -rf iubenda-cookie-law-solution
+
+# Matomo
+RUN wget https://downloads.wordpress.org/plugin/matomo.4.13.5.zip
+RUN unzip matomo.4.13.5.zip
+RUN cp -R matomo /usr/src/wordpress/wp-content/plugins/matomo
+RUN rm matomo.4.13.5.zip && rm -rf matomo
+
 # Plugins copied manually in the folder
-#COPY wp-content/plugins/gtranslate /usr/src/wordpress/wp-content/plugins/gtranslate
+COPY wp-content/plugins/ /usr/src/wordpress/wp-content/plugins/
 
 # Themes copied manually in the folder
-#COPY wp-content/themes/gtranslate /usr/src/wordpress/wp-content/themes/gtranslate
+COPY wp-content/themes/ /usr/src/wordpress/wp-content/themes/
 
 # Uploaded files copied manually in the folder
-#COPY wp-content/uploads /usr/src/wordpress/wp-content/uploads
+COPY wp-content/uploads/ /usr/src/wordpress/wp-content/uploads/
 
 # Uploads configurations
 COPY ./config/uploads.ini /usr/local/etc/php/conf.d/uploads.ini

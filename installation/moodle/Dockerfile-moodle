@@ -34,4 +34,4 @@ RUN cp -R mo_saml /opt/bitnami/moodle/auth/mo_saml
 RUN rm mo_saml_free.zip && rm -rf mo_saml
 
 # Plugins & themes copied manually in the folder
-#COPY theme /opt/bitnami/moodle/theme
+COPY theme/ /opt/bitnami/moodle/theme/
