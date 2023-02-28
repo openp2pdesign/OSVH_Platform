@@ -10,6 +10,7 @@ RUN apt update && \
 
 # Manual installation via server
 # https://docs.moodle.org/401/en/Installing_plugins
+# https://docs.moodle.org/dev/Plugin_types
 # /path/to/moodle/theme/ - themes
 # /path/to/moodle/mod/ - activity modules and resources
 # /path/to/moodle/blocks/ - sidebar blocks
@@ -20,11 +21,18 @@ RUN apt update && \
 # Copy here /opt/bitnami/moodle/theme
 
 # Plugins & themes to be added programmatically
+# Jitsi
 RUN wget https://moodle.org/plugins/download.php/28458/mod_jitsi_moodle41_2023012900.zip
 RUN unzip mod_jitsi_moodle41_2023012900.zip
 RUN cp -R jitsi /opt/bitnami/moodle/mod/jitsi
 RUN rm mod_jitsi_moodle41_2023012900.zip && rm -rf jitsi
 
+# Moodle SAML SSO
+# https://plugins.miniorange.com/single-sign-on-sso-between-wordpress-as-idp-and-moodle-as-sp
+RUN wget https://www.miniorange.com/downloads/mo_saml_free.zip
+RUN unzip mo_saml_free.zip
+RUN cp -R mo_saml /opt/bitnami/moodle/auth/mo_saml
+RUN rm mo_saml_free.zip && rm -rf mo_saml
+
 # Plugins & themes copied manually in the folder
 #COPY theme /opt/bitnami/moodle/theme
-

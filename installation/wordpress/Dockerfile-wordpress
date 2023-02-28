@@ -34,6 +34,7 @@ RUN cp -R buddypress /usr/src/wordpress/wp-content/plugins/buddypress
 RUN rm buddypress.11.1.0.zip && rm -rf buddypress
 
 # Login using WordPress Users ( WP as SAML IDP )
+# https://plugins.miniorange.com/single-sign-on-sso-between-wordpress-as-idp-and-moodle-as-sp
 RUN wget https://downloads.wordpress.org/plugin/miniorange-wp-as-saml-idp.1.14.5.zip
 RUN unzip miniorange-wp-as-saml-idp.1.14.5.zip
 RUN cp -R miniorange-wp-as-saml-idp /usr/src/wordpress/wp-content/plugins/miniorange-wp-as-saml-idp

@@ -16,16 +16,13 @@ services:
       - wpsite
   # MariaDB
   db_maria:
-    image: mariadb:10.10
+    image: mariadb
     container_name: "OSVH_DB_MARIA"
     volumes:
       - ./volumes/db_maria_data:/var/lib/mysql
     restart: always
     env_file:
       - .env_m
-    expose:
-      - 3307
-      - 33070
     networks:
       - msite
   # PostgreSQL
