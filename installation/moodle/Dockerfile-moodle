@@ -1,4 +1,4 @@
-FROM docker.io/bitnami/moodle:4
+FROM docker.io/bitnami/moodle:latest
 
 RUN apt update && \
     apt upgrade -y && \
