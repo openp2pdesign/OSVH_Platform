@@ -14,8 +14,9 @@ RUN apt update && \
 # - BuddyPress
 # - Login using WordPress Users ( WP as SAML IDP )
 # - WordPress REST API – OAuth 1.0a Server
-# - iubenda | All-in-one Compliance for GDPR / CCPA Cookie Consent + more
+# - Complianz – GDPR/CCPA Cookie Consent
 # - Matomo
+# - Easy WP SMTP – WordPress Email SMTP Plugin
 
 # Really Simple SSL
 RUN wget https://downloads.wordpress.org/plugin/really-simple-ssl.6.2.0.zip
@@ -48,17 +49,23 @@ RUN unzip rest-api-oauth1.0.3.0.zip
 RUN cp -R rest-api-oauth1 /usr/src/wordpress/wp-content/plugins/rest-api-oauth1
 RUN rm rest-api-oauth1.0.3.0.zip && rm -rf rest-api-oauth1
 
-# iubenda | All-in-one Compliance for GDPR / CCPA Cookie Consent + more
-RUN wget https://downloads.wordpress.org/plugin/iubenda-cookie-law-solution.3.5.9.zip
-RUN unzip iubenda-cookie-law-solution.3.5.9.zip
-RUN cp -R iubenda-cookie-law-solution /usr/src/wordpress/wp-content/plugins/iubenda-cookie-law-solution
-RUN rm iubenda-cookie-law-solution.3.5.9.zip && rm -rf iubenda-cookie-law-solution
+# Complianz – GDPR/CCPA Cookie Consent
+RUN wget https://downloads.wordpress.org/plugin/complianz-gdpr.6.4.2.zip
+RUN unzip complianz-gdpr.6.4.2.zip
+RUN cp -R complianz-gdpr /usr/src/wordpress/wp-content/plugins/complianz-gdpr
+RUN rm complianz-gdpr.6.4.2.zip && rm -rf complianz-gdpr
 
 # Matomo
 RUN wget https://downloads.wordpress.org/plugin/matomo.4.13.5.zip
 RUN unzip matomo.4.13.5.zip
 RUN cp -R matomo /usr/src/wordpress/wp-content/plugins/matomo
 RUN rm matomo.4.13.5.zip && rm -rf matomo
+
+# Easy WP SMTP – WordPress Email SMTP Plugin
+RUN wget https://downloads.wordpress.org/plugin/easy-wp-smtp.2.0.1.zip
+RUN unzip easy-wp-smtp.2.0.1.zip
+RUN cp -R easy-wp-smtp /usr/src/wordpress/wp-content/plugins/easy-wp-smtp
+RUN rm easy-wp-smtp.2.0.1.zip && rm -rf easy-wp-smtp
 
 # Plugins copied manually in the folder
 COPY wp-content/plugins/ /usr/src/wordpress/wp-content/plugins/
