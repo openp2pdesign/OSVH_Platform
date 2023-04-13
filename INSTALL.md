@@ -4,15 +4,16 @@
 
 ## Installation
 
-1. *git clone https://github.com/openp2pdesign/OSVH_Platform.git* (See also all the options for cloning in GitHub) / or Dowloand and unzip the file 
-2. modify the usernames and passwords environment files (.env_w, .env_m, .env_l)
+1. *git clone https://github.com/openp2pdesign/OSVH_Platform.git* (See also all the options for cloning in GitHub) / or Download this repository and unzip the file 
+2. modify the usernames and passwords environment files (.env_w, .env_m, .env_l) you need to create a username and a password for each system
 3. if using the git repo, create a .gitgnore file with them (.env_w, .env_m, .env_l) in it to avoiding overwriting / committing your passwords
 4. Wordpress: copy your plugins/themes/uploads in the *installation/wordpress/wp-content/* folder (in each respective subfolder), and they will be installed - this is especially for proprietary and own content not to be shared
 5. Moodle: copy your plugins/themes in the *installation/moodle/* folder (in each respective subfolder), and they will be installed - this is especially for proprietary and own content not to be shared
-6. Lanch the containers with *docker-compose up -d*
+6. Launch the containers with *docker-compose up -d*
 7. Go to DOMAIN:9000 to create your Portainer admin account
-8. Go to DOMAIN:8083 to configure domains & SSL certifcates for Wordpress, Moodle, Limesurvey, etc., with Nginx Proxy Manager.
-   You have to fill your Domain Names, the IP and port of the Host server.
+8. Go to DOMAIN:8083 to configure domains & SSL certificates for Wordpress, Moodle, Limesurvey, etc., with Nginx Proxy Manager.
+   Please carefully read the Nginx Proxy Manager documentation: 
+   You have to fill your Domain Names, the IP address and port for each server on the your Host server.
 <img src="IMG/nginx0.png" width="400" />
-9. For each Domain you have to ask for a SSL certificate. Please select Force SSL and HTTP/2 support options. 
+9. Then, for each Domain you have to ask for a SSL certificate. Please select Force SSL and HTTP/2 support options. 
 <img src="IMG/nginx2.png" width="400" />
