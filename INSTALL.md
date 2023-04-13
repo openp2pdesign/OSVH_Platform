@@ -17,3 +17,24 @@
 <img src="IMG/nginx0.png" width="400" />
 9. Then, for each Domain you have to ask for a SSL certificate. Please select Force SSL and HTTP/2 support options. 
 <img src="IMG/nginx2.png" width="400" />
+10. Finally you should go to Wordpress and access the wp-config.php on your docker instance.
+
+    Then add this to the file:
+
+    Add following at top of wp-config.php  
+    
+    define('FORCE_SSL_ADMIN', true);
+    
+    if (strpos($_SERVER['HTTP_X_FORWARDED_PROTO'], 'https') !== false){
+        $_SERVER['HTTPS'] = 'on';
+        $_SERVER['SERVER_PORT'] = 443;
+    }
+    if (isset($_SERVER['HTTP_X_FORWARDED_HOST'])) {
+        $_SERVER['HTTP_HOST'] = $_SERVER['HTTP_X_FORWARDED_HOST'];
+    }
+    
+    Add following at end of wp-config.php. Repalce example.com with your domain name
+    
+    define('WP_HOME','https://example.com/');
+    define('WP_SITEURL','https://exampe.com/');
+
