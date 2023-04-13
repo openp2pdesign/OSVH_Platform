@@ -11,5 +11,9 @@
 5. Moodle: copy your plugins/themes in the *installation/moodle/* folder (in each respective subfolder), and they will be installed - this is especially for proprietary and own content not to be shared
 6. Lanch the containers with *docker-compose up -d*
 7. Go to DOMAIN:9000 to create your Portainer admin account
-8. Go to DOMAIN:8083 to configure domains & SSL certifcates for Wordpress, Moodle, Limesurvey, ... with Nginx Proxy Manager
-9. ... 
+8. Go to DOMAIN:8083 to configure domains & SSL certifcates for Wordpress, Moodle, Limesurvey, etc., with Nginx Proxy Manager.
+   You have to fill your Domain Names, the IP and port of the Host server.
+![nginx1](IMG/nginx1.png)
+9. For each Domain you have to ask for a SSL certificate. Please select Force SSL and HTTP/2 support options. 
+![nginx2](IMG/nginx2.png)
+
