@@ -13,6 +13,7 @@
 7. Go to DOMAIN:9000 to create your Portainer admin account
 8. Go to DOMAIN:8083 to configure domains & SSL certifcates for Wordpress, Moodle, Limesurvey, etc., with Nginx Proxy Manager.
    You have to fill your Domain Names, the IP and port of the Host server.
+<img src="IMG/nginx0.png" width="200" />
 ![nginx1](IMG/nginx0.png){width=300}
 9. For each Domain you have to ask for a SSL certificate. Please select Force SSL and HTTP/2 support options. 
 ![nginx2](IMG/nginx2.png)
