@@ -15,5 +15,4 @@
    You have to fill your Domain Names, the IP and port of the Host server.
 <img src="IMG/nginx0.png" width="400" />
 9. For each Domain you have to ask for a SSL certificate. Please select Force SSL and HTTP/2 support options. 
-<img src="IMG/nginx1.png" width="400" />
-
+<img src="IMG/nginx2.png" width="400" />
