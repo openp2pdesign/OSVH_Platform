@@ -17,6 +17,10 @@ RUN apt update && \
 # - Complianz – GDPR/CCPA Cookie Consent
 # - Matomo
 # - Easy WP SMTP – WordPress Email SMTP Plugin
+# - GeoDirectory
+# - Image Upload for BBPress
+# - Nav Menu Roles
+# - Safe SVG 
 
 # Really Simple SSL
 RUN wget https://downloads.wordpress.org/plugin/really-simple-ssl.6.2.0.zip
@@ -67,12 +71,29 @@ RUN unzip easy-wp-smtp.2.0.1.zip
 RUN cp -R easy-wp-smtp /usr/src/wordpress/wp-content/plugins/easy-wp-smtp
 RUN rm easy-wp-smtp.2.0.1.zip && rm -rf easy-wp-smtp
 
-# Comment Mention
-RUN wget https://downloads.wordpress.org/plugin/comment-mention.1.7.1.zip
-RUN unzip comment-mention.1.7.1.zip
-RUN cp -R comment-mention /usr/src/wordpress/wp-content/plugins/comment-mention
-RUN rm comment-mention.1.7.1.zip && rm -rf comment-mention
+# GeoDirectory
+RUN wget https://downloads.wordpress.org/plugin/geodirectory.2.3.10.zip
+RUN unzip geodirectory.2.3.10.zip
+RUN cp -R geodirectory /usr/src/wordpress/wp-content/plugins/geodirectory
+RUN rm geodirectory.2.3.10.zip && rm -rf geodirectory
 
+# Image Upload for BBPress
+RUN wget https://downloads.wordpress.org/plugin/image-upload-for-bbpress.1.1.18.zip
+RUN unzip image-upload-for-bbpress.1.1.18.zip
+RUN cp -R image-upload-for-bbpress /usr/src/wordpress/wp-content/plugins/image-upload-for-bbpress
+RUN rm image-upload-for-bbpress.1.1.18.zip && rm -rf image-upload-for-bbpress
+
+# Nav Menu Roles
+RUN wget https://downloads.wordpress.org/plugin/nav-menu-roles.2.1.2.zip
+RUN unzip nav-menu-roles.2.1.2.zip
+RUN cp -R nav-menu-roles /usr/src/wordpress/wp-content/plugins/nav-menu-roles
+RUN rm nav-menu-roles.2.1.2.zip && rm -rf nav-menu-roles
+
+# Safe SVG
+RUN wget https://downloads.wordpress.org/plugin/safe-svg.2.1.1.zip
+RUN unzip safe-svg.2.1.1.zip
+RUN cp -R safe-svg /usr/src/wordpress/wp-content/plugins/safe-svg
+RUN rm safe-svg.2.1.1.zip && rm -rf safe-svg
 
 # Plugins copied manually in the folder
 COPY wp-content/plugins/ /usr/src/wordpress/wp-content/plugins/
