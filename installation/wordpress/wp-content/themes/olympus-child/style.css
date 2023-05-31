@@ -1,0 +1,335 @@
+/*
+Theme Name: Olympus child Theme
+Theme URI: https://olympus.crumina.net/
+Author: Crumina Team
+Author URI: https://crumina.net/
+Description: BuddyPress WordPress child theme.
+Version: 1
+Template:olympus
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: olympus
+*/
+
+/*****************************************************************
+Add Custom styles below 
+******************************************************************/
+
+.olympus-theme #buddypress div.item-list-tabs ul li#members-all a span {
+    display: none !important;
+}
+
+.pilot-training-top-icon div {
+    width: 15px;
+    height: 15px;
+    padding-right: 25px;
+}
+
+.pilot-training-left-icon span {}
+
+/*
+Classic header panel
+*/
+.sub-title {
+    font-family: "Space Grotesk", "sans-serif";
+    font-size: 0.75em !important;
+}
+
+nav {
+    font-family: "Space Grotesk", "sans-serif";
+    font-size: 0.75em !important;
+}
+
+.author-content {
+    font-family: "Space Grotesk", "sans-serif";
+    color: #000;
+}
+
+/*
+Social header panel
+*/
+input,
+.item-list-tabs {
+    font-family: "Space Grotesk", "sans-serif" !important;
+
+}
+
+.header--standard>.container {
+    width: 100%;
+    max-width: 1920px;
+}
+
+/*
+Home
+*/
+.container {
+    max-width: 1920px;
+}
+
+.ui-block {
+    background-color: #fbf7f2;
+}
+
+html:root,
+html[data-theme='light'] {
+    --ol-border-color-darken: #3e3a37;
+    --ol-border-color: #D3D1CD;
+    --third-accent-color: #3e3a37;
+}
+
+p {
+    color: #000;
+}
+
+.user-welcomeback .author-content {
+    color: #000;
+}
+
+#title-home h1 {
+    color: #fbf7f2 !important;
+}
+
+.user-welcomeback .you-can-do {
+    color: #3e3a37;
+    font-size: 10px;
+}
+
+.user-welcomeback .link-item .title {
+    font-size: 14px;
+    color: #000;
+}
+
+.user-welcomeback .link-item .sup-title {
+    color: #3e3a37;
+}
+
+.btn:hover {
+    box-shadow: none;
+}
+
+.olympus-theme .btn-primary {
+    color: #000;
+    background-color: #fbf7f2;
+}
+
+.olympus-theme .btn-primary:hover {
+    background-color: #eb5962;
+}
+
+body.olympus-theme {
+    color: #000;
+}
+
+.heading-title {
+    margin-bottom: 0.5rem;
+}
+
+b,
+strong {
+    font-weight: bolder;
+    text-decoration: underline;
+}
+
+.btn-blue {
+    border-color: #3e3a37;
+    background-color: #3e3a37;
+    color: #fbf7f2;
+}
+
+.btn-blue:hover {
+    border-color: #D3D1CD;
+    background-color: #D3D1CD;
+    color: #3e3a37;
+}
+
+.vc_custom_1676559849684 {
+    padding-bottom: 0px !important;
+}
+
+.vc_custom_1676560149625 {
+    padding-top: 0px !important;
+}
+
+.vc_row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.wpb_single_image.vc_align_left {
+    text-align: center;
+}
+
+.vc_column_container>.vc_column-inner {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+div.section-theme-padding {
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+}
+
+#newsletter1 {
+    background-color: #eb596299;
+    border: solid 5px #eb596299;
+}
+
+/*
+Community
+
+.youzify a {
+	color: #000 !important;
+}*/
+
+.youzify-page {
+    background-color: #fbf7f2 !important;
+}
+
+.youzify-card-action-buttons-block .youzify-user-actions a.youzify-profile-settings {
+    color: #fbf7f2 !important;
+    opacity: 0.85 !important;
+}
+
+.youzify-card-action-buttons-block .youzify-user-actions a.youzify-profile-settings:hover {
+    background-color: #eb5962 !important;
+    color: #fbf7f2 !important;
+    opacity: 1 !important;
+}
+
+.youzify-user-actions .yzmd-second-btn:hover,
+.youzify-user-actions .youzify-send-message:hover {
+    background-color: #D3D1CD !important;
+    color: #3e3a37 !important;
+}
+
+.youzify-card-action-buttons-block .youzify-user-actions .message-button .youzify-send-message {
+    opacity: 1;
+}
+
+.youzify-card-action-buttons-block .youzify-user-actions .friendship-button .friendship-button {
+    opacity: 1;
+}
+
+.youzify-card-action-buttons-block .youzify-user-actions .friendship-button .friendship-button:hover {
+    background-color: #D3D1CD !important;
+    color: #3e3a37 !important;
+}
+
+h2 {
+    color: #3e3a37;
+}
+
+.c-primary {
+    color: #eb5962 !important;
+}
+
+h1 {
+    color: #3e3a37;
+}
+
+a.youzify-manage-group {
+    color: #fff !important;
+    background-color: #eb5962 !important;
+}
+
+a.friendship-button,
+a.not_friends,
+a.add {
+    color: #fff !important;
+}
+
+/*
+Forum
+*/
+#bbpress-forums div.bbp-breadcrumb .bbp-breadcrumb-current a {
+    background-color: #D3D1CD;
+}
+
+body .youzify_group_rss-2 a {
+    background: url(http://platform.villagehosts.eu/wp-content/plugins/youzify/includes/public/assets/images/dotted-bg.png), -webkit-linear-gradient(right, #eb5962, #d64c59) !important
+}
+
+
+/*
+Log in
+*/
+.youzify-membership-form-note.youzify-membership-terms-note a {
+    color: #eb5962;
+    font-weight: 600;
+}
+
+#youzify_membership_signup_form .field-visibility-settings-notoggle .visibility-toggle-link,
+#youzify_membership_signup_form .field-visibility-settings-toggle .visibility-toggle-link {
+    color: #fbf7f2;
+    border: none;
+    font-size: 11px;
+    padding: 4px 12px;
+    margin-left: 8px;
+    letter-spacing: .03em;
+    background-color: #eb5962;
+}
+
+#youzify_membership_signup_form .field-visibility-settings-toggle .visibility-toggle-link {
+    background-color: #eb5962;
+    background-image: none;
+    background-image: none;
+}
+
+#youzify_membership_signup_form .field-visibility-settings .field-visibility-settings-close,
+#youzify_membership_signup_form .field-visibility-settings-notoggle .visibility-toggle-link,
+#youzify_membership_signup_form .field-visibility-settings-toggle .visibility-toggle-link {
+    background-color: #eb5962;
+    background-image: none;
+}
+
+.youzify #friend-list .action a.accept {
+    background-color: #eb5962 !important;
+}
+
+.youzify #friend-list .action a.reject {
+    background-color: #eb5962 !important;
+}
+
+.youzify #friend-list .action a.accept:hover {
+    background-color: #eb5962b3 !important;
+}
+
+.youzify #friend-list .action a.reject:hover {
+    background-color: #eb5962b3 !important;
+}
+
+#youzify-groups-list .action .group-button .leave-group {
+    color: #ffffff !important;
+    border: none;
+    background-color: #eb5962;
+    opacity: 0.85;
+}
+
+#youzify-groups-list .action .group-button .leave-group:hover {
+    color: #ffffff;
+    border: none;
+    background-color: #eb5962;
+    opacity: 1;
+}
+
+#youzify-group-buttons a.leave-group,
+#youzify-group-buttons a.membership-requested {
+    background-color: #eb5962;
+    color: #ffffff !important;
+}
+
+.youzify-forums-topic-item .youzify-forums-topic-icon i,
+.youzify-forums-forum-item .youzify-forums-forum-icon i {
+    font-size: 33px;
+    background-color: var(--secondary-accent-color) !important;
+    line-height: 40px;
+}
+
+.fixed-sidebar-left.sidebar--large {
+    width: 240px;
+}
+
+.olympus-theme .btn-primary {
+    color: #000;
+    background-color: #eb5962;
+}
