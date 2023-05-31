@@ -21,6 +21,7 @@ RUN apt update && \
 # - Image Upload for BBPress
 # - Nav Menu Roles
 # - Safe SVG 
+# - Youzify
 
 # Really Simple SSL
 RUN wget https://downloads.wordpress.org/plugin/really-simple-ssl.6.2.0.zip
@@ -94,6 +95,12 @@ RUN wget https://downloads.wordpress.org/plugin/safe-svg.2.1.1.zip
 RUN unzip safe-svg.2.1.1.zip
 RUN cp -R safe-svg /usr/src/wordpress/wp-content/plugins/safe-svg
 RUN rm safe-svg.2.1.1.zip && rm -rf safe-svg
+
+# Youzify
+RUN wget https://downloads.wordpress.org/plugin/youzify.1.2.2.zip
+RUN unzip youzify.1.2.2.zip
+RUN cp -R youzify /usr/src/wordpress/wp-content/plugins/youzify
+RUN rm youzify.1.2.2.zip && rm -rf youzify
 
 # Plugins copied manually in the folder
 COPY wp-content/plugins/ /usr/src/wordpress/wp-content/plugins/
