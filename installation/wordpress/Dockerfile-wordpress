@@ -71,7 +71,7 @@ RUN rm easy-wp-smtp.2.0.1.zip && rm -rf easy-wp-smtp
 RUN wget https://downloads.wordpress.org/plugin/comment-mention.1.7.1.zip
 RUN unzip comment-mention.1.7.1.zip
 RUN cp -R comment-mention /usr/src/wordpress/wp-content/plugins/comment-mention
-RUN rm comment-mention.1.7.1.zip && -rf comment-mention
+RUN rm comment-mention.1.7.1.zip && rm -rf comment-mention
 
 
 # Plugins copied manually in the folder
