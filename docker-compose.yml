@@ -42,7 +42,7 @@ services:
       - lsite
 
   # phpMyAdmin
-  # phpMyAdmin for Wordpress
+  # phpMyAdmin for Wordpress and Moodle
   phpmyadmin:
     image: phpmyadmin
     container_name: "OSVH_PHPMYADMIN"
@@ -58,6 +58,23 @@ services:
     networks:
       - wpsite
       - msite
+  # pgAdmin for LimeSurvey
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: "OSVH_PGADMIN"
+    restart: always
+    ports:
+      - 8004:80
+    env_file:
+      - .env_l
+    volumes:
+       - pgadmin_data:/var/lib/pgadmin
+    depends_on:
+      - db_postgres
+    links:
+      - db_postgres
+    networks:
+      - lsite
 
   # --- FRONT-END ---
   # Wordpress
@@ -173,6 +190,7 @@ volumes:
   limesurvey_data:
   nginx_data:
   letsencrypt_data:
+  pgadmin_data:
 
 
 networks:
