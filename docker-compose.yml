@@ -69,6 +69,7 @@ services:
       - .env_l
     volumes:
        - pgadmin_data:/var/lib/pgadmin
+       - pgadmin_tmp:/tmp
     depends_on:
       - db_postgres
     links:
@@ -191,6 +192,7 @@ volumes:
   nginx_data:
   letsencrypt_data:
   pgadmin_data:
+  pgadmin_tmp:
 
 
 networks:
